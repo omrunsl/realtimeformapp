@@ -3,12 +3,19 @@
       <!--  <v-toolbar-side-icon></v-toolbar-side-icon> -->
         <v-toolbar-title>Soru&Cevap</v-toolbar-title>
         <v-spacer></v-spacer>
-        <v-toolbar-items class="hidden-sm-and-down">
-            <v-btn flat>Anasayfa</v-btn>
+        <div class="hidden-sm-and-down">
+            <router-link to="/">
+                <v-btn flat>Anasayfa</v-btn>
+            </router-link>
+
             <v-btn flat>Soru Sor</v-btn>
             <v-btn flat>Kategoriler</v-btn>
-            <v-btn flat>GIRIS Yap</v-btn>
-        </v-toolbar-items>
+
+            <router-link to="/girisyap">
+                <v-btn flat>Giris Yap</v-btn>
+            </router-link>
+
+        </div>
     </v-toolbar>
 </template>
 
