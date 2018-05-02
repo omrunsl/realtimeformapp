@@ -4,15 +4,15 @@
         <v-toolbar-title>Soru&Cevap</v-toolbar-title>
         <v-spacer></v-spacer>
         <div class="hidden-sm-and-down">
-            <router-link to="/">
-                <v-btn flat>Anasayfa</v-btn>
-            </router-link>
 
-            <v-btn flat>Soru Sor</v-btn>
-            <v-btn flat>Kategoriler</v-btn>
 
-            <router-link to="/girisyap">
-                <v-btn flat>Giris Yap</v-btn>
+            <router-link
+                    v-for="item in items"
+                    :key="item.title"
+                    :to="item.to"
+                    v-if="item.show"
+                    >
+                <v-btn flat>{{item.title}}</v-btn>
             </router-link>
 
         </div>
@@ -21,7 +21,23 @@
 
 <script>
     export default {
-        name: "tollbar"
+        name: "tollbar",
+        data(){
+            return {
+                items:[
+                    {title: 'Forum', to: '/forum',show: true},
+                    {title: 'Soru Sor', to:'/sor',show: User.loggedIn()},
+                    {title: 'Kategoriler', to:'/kategoriler',show: User.loggedIn()},
+                    {title: 'Giris', to: '/girisyap',show: !User.loggedIn()},
+                    {title: 'Cikis', to:'/cikisyap',show: User.loggedIn()}
+                ]
+            }
+        },
+        created(){
+            EventBus.$on('cikisyap', () => {
+                User.logOut()
+            })
+        }
     }
 </script>
 

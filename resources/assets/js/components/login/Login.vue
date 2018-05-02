@@ -20,8 +20,12 @@
                 color="green"
                 type="submit"
             >
-                Giriş
+                Giris
             </v-btn>
+
+            <router-link to="/kayitol">
+                <v-btn color="blue">Kayıt Ol</v-btn>
+            </router-link>
 
         </v-form>
     </v-container>
@@ -37,6 +41,11 @@
                     password:null
                 }
             }
+        },
+        created(){
+          if(User.loggedIn()){
+              this.$router.push({name:'forum'})
+          }
         },
         methods:{
             login(){
