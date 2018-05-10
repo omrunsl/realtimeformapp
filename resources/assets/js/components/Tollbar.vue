@@ -27,7 +27,7 @@
                 items:[
                     {title: 'Forum', to: '/forum',show: true},
                     {title: 'Soru Sor', to:'/sor',show: User.loggedIn()},
-                    {title: 'Kategoriler', to:'/kategoriler',show: User.loggedIn()},
+                    {title: 'Kategori', to:'/kategori',show: User.admin()},
                     {title: 'Giris', to: '/girisyap',show: !User.loggedIn()},
                     {title: 'Cikis', to:'/cikisyap',show: User.loggedIn()}
                 ]
